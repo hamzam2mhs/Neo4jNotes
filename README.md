@@ -26,9 +26,6 @@ actor -> ACTS IN -> movie
 ACTS IN {aID, mID}
 the relation is many to many
 
->_{NeoJ4 said to keep this safe}_
->eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ii4rQC4rIiwiZ29vZ2xlQW5hbHl0aWNzSWQiOiIxNTgwNTc3NjM0LjE2MDYzNzUzODgiLCJvcmciOiIuKiIsInB1YiI6Im5lbzRqLmNvbSIsInJlZyI6IiAiLCJzdWIiOiJuZW80ai1kZXNrdG9wIiwiZXhwIjoxNjM3OTExNjcxLCJ2ZXIiOiIqIiwiaXNzIjoibmVvNGouY29tIiwibmJmIjoxNjA2Mzc1NjcxLCJpYXQiOjE2MDYzNzU2NzEsImp0aSI6IjVobTB5TlNpNyJ9.NoA2Y2o3LEYxhT1voAgBxnkAPJxUdLvFR6BVs_tqi5-onOy0ZfMi3jMZRaRQbKe4iLgxiCgOn4hqe3D3MTmWr_6KLn_15Ncs11Hl0JNLqTTIwZahJdVprK_7pnKvRMzEM_A3ZYdLTpXgm07vc9daawfD92hIcoSBoKJkO2MFAXM_sgj1L786cVDwAaoyC4GfueqO5Ho3KXHdLSXVybyPYlOw_oHfG8xLFV64rtz5LDxHgNo7BF2QSPytEZqwgMQ2OBOt30m0MLBZw0dysiuCHIYKtvoOpKTqM6Xy94o-qqgZKY19y1IKy0ipiaM_Ubs5wiYmDzPPtI0TGeQO6xudRg
-
 **Breadth first search**
 >So go from one node to another and visit all of the info in that node and keep adding that info to a queue therefore basically saying i have visited all of this info and nots there and keep moving to the next sorta thing
 
@@ -50,7 +47,7 @@ the relation is many to many
 ### Creating stuff
 
 ```java
-//NeoJ4 example
+//Neo4J example
 CREATE (className:CLASS {stringName: 'theName', intBorn: 1900})
 
 //java example
@@ -102,7 +99,7 @@ So even our MATCH statements can be assigned a label
 
 An example that we will hopefully get in Time
 ```java
-MATCH(variableName:Label) return aVariableWeTracked
+MATCH(variableName:Label) return variableName
 //can comment
 match(m:movie) return m
 ```
@@ -136,12 +133,12 @@ SELECT * FROM tableN
 
 So now we dont want all the ppl but a certain someone: "Tom Hanks"
 ```java
-MATCH(jon:Person{name:"Tom Hanks"})return jon
+MATCH(p:Person{name:"Tom Hanks"})return p
 ```
 
-This would read out as match in the tabel all jon where jons name is "Tom Hanks"  
+This would read out as match in the tabel all p where p's name is "Tom Hanks"  
 Therefore we made a variable which has the value Tom Hanks and we looked for them in Person and returned them  
-So my MATCH statements label is _jon_
+So my MATCH statements label is _p_
 
 _**Now this stuff is getting beautiful**_
 ```java
@@ -155,7 +152,7 @@ MATCH (a)-[:b]-(c) return a,b,c
 MATCH (p:person)-[d:DIRECTED]-(m:Movie) RETURN p,d,m
 ```
 So just looking at thelast one, I can say:  
-Get me all persons p that have directed a movie m
+Get me all persons (p) that have directed (d) a movie (m)
 
 
 **SIZE**
